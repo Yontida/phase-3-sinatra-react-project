@@ -6,18 +6,22 @@ class ApplicationController < Sinatra::Base
     { message: "Good luck with your project!" }.to_json
   end
 
-  get "/user" do
+  # get "/user" do
 
-    {
-      name: "Yontida"
-  }.to_json
+  #   {
+  #     name: "Yontida"
+  # }.to_json
 
-  end
+  # end
 
   get "/users" do
-
     User.all.to_json
-  
+  end
+
+
+  get "/recipes" do
+    recipes = Recipe.all
+    recipes.to_json({include: [user:{only: :name}]})
   end
 
 end

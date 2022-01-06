@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
-  #has_many SOMETHINGS
+  has_many :recipes
 
 end
+
+# U -< R
