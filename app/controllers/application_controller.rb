@@ -24,4 +24,9 @@ class ApplicationController < Sinatra::Base
     recipes.to_json({include: [user:{only: :name}]})
   end
 
+  post "/recipes" do 
+    recipe = Recipe.create({recipe_name:params[:recipe_name], image_url:params[:image_url], ingredient:params[:ingredient], direction:params[:direction], user_id:params[:user_id]})
+    recipe.to_json(include: :user)
+  end 
+
 end
