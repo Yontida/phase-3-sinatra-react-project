@@ -29,4 +29,13 @@ class ApplicationController < Sinatra::Base
     recipe.to_json(include: :user)
   end 
 
+
+  delete "/recipes/:id" do
+
+    recipe = Recipe.find(params[:id])
+    recipe.destroy
+  
+    {message: 'recipe deleted'}.to_json
+  end
+
 end
