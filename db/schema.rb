@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2022_01_06_145059) do
     t.string "recipe_name"
     t.string "image_url"
     t.text "ingredient"
-    t.text "direction"
+    t.text "instruction"
     t.integer "user_id"
   end
 

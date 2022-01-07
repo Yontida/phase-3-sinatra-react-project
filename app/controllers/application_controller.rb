@@ -6,14 +6,6 @@ class ApplicationController < Sinatra::Base
     { message: "Good luck with your project!" }.to_json
   end
 
-  # get "/user" do
-
-  #   {
-  #     name: "Yontida"
-  # }.to_json
-
-  # end
-
   get "/users" do
     User.all.to_json
   end
@@ -25,7 +17,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/recipes" do 
-    recipe = Recipe.create({recipe_name:params[:recipe_name], image_url:params[:image_url], ingredient:params[:ingredient], direction:params[:direction], user_id:params[:user_id]})
+    recipe = Recipe.create({recipe_name:params[:recipe_name], image_url:params[:image_url], ingredient:params[:ingredient], instruction:params[:instruction], user_id:params[:user_id]})
     recipe.to_json(include: :user)
   end 
 
@@ -33,9 +25,7 @@ class ApplicationController < Sinatra::Base
   delete "/recipes/:id" do
 
     recipe = Recipe.find(params[:id])
-    recipe.destroy
-  
-    {message: 'recipe deleted'}.to_json
+    recipe.destroy.to_json
   end
 
 end
